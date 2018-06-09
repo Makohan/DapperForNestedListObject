@@ -32,10 +32,10 @@ If you want to map to these classes by Dapper
     {
         public string ClassCode { get; set; }
         public string ClassName { get; set; }
-        public List<Person> Persons { get; set; }
+        public List<Student> Students { get; set; }
     }
 
-    public class Person
+    public class Student
     {
         public int Id { get; set; }
         public string Name { get; set; }
