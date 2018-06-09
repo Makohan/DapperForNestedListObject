@@ -59,7 +59,9 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\Member.cs" />
     <Compile Include="Models\MyDbContext.cs" />
-    <Compile Include="Models\Supports\Report.cs" />
+    <Compile Include="Models\Supports\Grade.cs" />
+    <Compile Include="Models\Supports\Class.cs" />
+    <Compile Include="Models\Supports\Student.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -15,30 +15,30 @@ namespace TryDapper
 
             using (var db = new MyDbContext())
             {
-                db.Database.Connection.Query<Person, Class, Grade, Person>(
+                db.Database.Connection.Query<Student, Class, Grade, Student>(
                     "select * from members",
-                    (p, c, g) =>
+                    (s, c, g) =>
                     {
                         if (!grades.Contains(g))
                         {
-                            c.Persons = new List<Person>() { p };
+                            c.Students = new List<Student>() { s };
                             g.Classes = new List<Class>() { c };
                             grades.Add(g);
-                            return p;
+                            return s;
                         }
 
                         Grade grade = grades.Single(gl => gl.Equals(g));
                         if (!grade.Classes.Contains(c))
                         {
-                            c.Persons = new List<Person>() { p };
+                            c.Students = new List<Student>() { s };
                             grade.Classes.Add(c);
-                            return p;
+                            return s;
                         }
 
                         Class clazz = grade.Classes.Single(cl => cl.Equals(c));
-                        clazz.Persons.Add(p);
+                        clazz.Students.Add(s);
 
-                        return p;
+                        return s;
                     },
                     splitOn: "ClassCode,GradeCode");
             }
@@ -52,7 +52,7 @@ namespace TryDapper
                 {
                     Console.WriteLine("--------");
                     Console.WriteLine(clazz.ClassName);
-                    var persons = clazz.Persons.Select(p => p);
+                    var persons = clazz.Students.Select(p => p);
                     foreach (var person in persons)
                     {
                         Console.WriteLine(person.Name);
